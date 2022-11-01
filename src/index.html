@@ -15,15 +15,32 @@
                 <i class="fa-solid fa-sync"></i>
             </div>
             <div class="form-div">
-                <form action="" method="post">
-                    <input type="text" name="todo" id="todo" placeholder="Add to your list...">
+                <form action="" method="post" id="todo-form">
+                    <div class="form-input">
+                        <input type="text" name="todo" id="todo" placeholder="Add to your list...">
+                        <!-- <h3><i class="fa-solid fa-arrow-right-to-bracket"></i></h3> -->
+                    </div>
                 </form>
             </div>
             <div class="todo_lists">
-                <div class="todo_item">
-                    <input type="checkbox" id="" name="" value=""> <h3 class="item">Learn Javascript</h3> <i></i>
+                <div class="todo-item">
+                    <div class="todo_detail">
+                        <input type="checkbox" id="" name="" value=""> <h3 class="item">Learn Javascript</h3> <i></i>
+                    </div>
+                    <i class="fa-solid fa-trash-can"></i>
                 </div>
-
+                <div class="todo-item">
+                    <div class="todo_detail">
+                        <input type="checkbox" id="" name="" value=""> <h3 class="item">Learn CSs</h3> <i></i>
+                    </div>
+                    <i class="fa-solid fa-trash-can"></i>
+                </div>
+                <div class="todo-item">
+                    <div class="todo_detail">
+                        <input type="checkbox" id="" name="" value=""> <h3 class="item">Learn RUby</h3> <i></i>
+                    </div>
+                    <i class="fa-solid fa-trash-can"></i>
+                </div>
             </div>
             <div class="clear">
                 <h3>Clear all completed</h3>
