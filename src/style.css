@@ -5,7 +5,6 @@
 }
 
 .main-section {
-  /* width: 100%; */
   background-color: #fff;
   border-radius: 5px;
   margin: 10% 10%;
@@ -72,6 +71,7 @@
 .clear h3 {
   font-size: 0.9rem;
   font-weight: normal;
+  cursor: pointer;
 }
 
 i:hover {
