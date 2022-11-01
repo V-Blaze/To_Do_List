@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-section {
+  /* width: 100%; */
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 10% 10%;
+  box-shadow: 3px 3px 3px 2px gray;
+  padding: 2% 2%;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  margin: 3% auto;
+  
+}
+
+.title h1 {
+  font-size: 1.2rem;
+}
+
+.title i {
+  display: block;
+}
