@@ -24,15 +24,28 @@ static reassignIndex = (todoList) => {
     })
 }
 
-static deleteItem = (id) => {
+static deleteTask = (id) => {
     let todoList = this.getLocalStorageData();
     const itemToDelete = todoList[id];
-    console.log(itemToDelete, id)
   
     todoList = todoList.filter((item) => item !== itemToDelete);
     
     this.reassignIndex(todoList)
     this.setLocalStorageData(todoList);
+  };
+
+static updateTaskInput = (newDesc, id) => {
+    let todoList = this.getLocalStorageData();
+    const itemToUpdate = todoList[id];
+    
+    todoList.forEach((item) => {
+        if(item == itemToUpdate) {
+            item.description = newDesc
+        }
+    });
+
+    this.setLocalStorageData(todoList)
+    this.showTodoItems()
   };
 
 static addBtnRemoveEvent = () => {
@@ -44,8 +57,30 @@ static addBtnRemoveEvent = () => {
     } else {
         id = 0
     }
-      this.deleteItem(id);
+      this.deleteTask(id);
       this.showTodoItems();
+    }));
+};
+
+static addBtnEditEvent = () => {
+    document.querySelectorAll('.edit-btn').forEach((button) => button.addEventListener('click', (event) => {
+      event.preventDefault();
+      let id 
+      if (button.id > 0) {
+        id = button.id - 1;
+    } else {
+        id = 0
+    }
+
+    let todoList = this.getLocalStorageData();
+    const itemToEdit = todoList[id];
+
+    document.getElementById('todo-input').style.display = 'none'
+    let editInput = document.querySelector('.todo-edit-input')
+    editInput.value = itemToEdit.description;
+    editInput.setAttribute("id", id)
+    document.getElementById('edit-todo-item').style.display = 'block'
+    editInput.focus()
     }));
 };
 
@@ -73,9 +108,10 @@ static showTodoItems = () => {
         document.querySelector('.todo_lists').append(this.creatTodoItemsHtml(item));
       });
 this.addBtnRemoveEvent()
+this.addBtnEditEvent()
 }
 
-static addTodoItem = (description) => {
+static addTodoTask = (description) => {
     const todoList = this.getLocalStorageData()
     const index = todoList.length + 1
     const newTodoItem = new Todo (description, index );

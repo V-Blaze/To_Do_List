@@ -40,17 +40,24 @@ i {
 .form-div {
   display: flex;
   justify-content: space-between;
-  padding: 3% 0;
+  padding: 2% 0;
+  min-height: 3%;
   border-bottom: 1px solid gray;
 }
 
 .form-input {
   display: flex;
   justify-content: space-between;
+  margin-right: 3%;
 }
 
 .form-input input {
   border: none;
+  height: 2.5rem;
+}
+
+#edit-todo-item {
+  display: none;
 }
 
 .todo-item {
