@@ -18,11 +18,35 @@ static getLocalStorageData = () => {
     return todoList;
 };
 
+static reassignIndex = (todoList) => {
+   todoList.forEach((item, i) => {
+       item.index = i + 1
+    })
+}
+
+static deleteItem = (id) => {
+    let todoList = this.getLocalStorageData();
+    const itemToDelete = todoList[id];
+    console.log(itemToDelete, id)
+  
+    todoList = todoList.filter((item) => item !== itemToDelete);
+    
+    this.reassignIndex(todoList)
+    this.setLocalStorageData(todoList);
+    console.log(todoList)
+  };
+
 static addBtnRemoveEvent = () => {
     document.querySelectorAll('.trash-can').forEach((button) => button.addEventListener('click', (event) => {
       event.preventDefault();
-    //   const { id } = button;
-  console.log(event.target.attributes.id.value, button.id)
+      let id 
+      if (button.id > 0) {
+        id = button.id - 1;
+    } else {
+        id = 0
+    }
+      this.deleteItem(id);
+      this.showTodoItems();
     }));
 };
 
@@ -35,7 +59,7 @@ static creatTodoItemsHtml = ({description, index}) => {
       <input type="checkbox" id="" name="" value=""> <h3 class="item">${description}</h3> <i></i>
       </div>
       <div>
-      <button class="trash-can" id="${index}"><i class="fa-regular fa-pen-to-square"></i></button>
+      <button class="edit-btn" id="${index}"><i class="fa-regular fa-pen-to-square"></i></button>
       <button class="trash-can" id="${index}"><i class="fa-solid fa-trash-can"></i></button>
       </div>
       `;
@@ -55,11 +79,10 @@ this.addBtnRemoveEvent()
 static addTodoItem = (description) => {
     const todoList = this.getLocalStorageData()
     const index = todoList.length + 1
-    console.log(todoList.length)
     const newTodoItem = new Todo (description, index );
 
     todoList.push(newTodoItem)
-    console.log(newTodoItem)
+    console.log(todoList)
     this.setLocalStorageData(todoList)
     this.showTodoItems()
 };

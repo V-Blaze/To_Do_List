@@ -4,6 +4,16 @@
   box-sizing: border-box;
 }
 
+button {
+  outline: none;
+  border: none;
+}
+
+i {
+  opacity: 0.8;
+  color: gray;
+}
+
 .main-section {
   background-color: #fff;
   border-radius: 5px;
@@ -75,4 +85,6 @@
 
 i:hover {
   cursor: pointer;
+  color: #000;
+  opacity: 1;
 }
