@@ -33,7 +33,6 @@ static deleteItem = (id) => {
     
     this.reassignIndex(todoList)
     this.setLocalStorageData(todoList);
-    console.log(todoList)
   };
 
 static addBtnRemoveEvent = () => {
@@ -82,7 +81,6 @@ static addTodoItem = (description) => {
     const newTodoItem = new Todo (description, index );
 
     todoList.push(newTodoItem)
-    console.log(todoList)
     this.setLocalStorageData(todoList)
     this.showTodoItems()
 };
