@@ -4,6 +4,16 @@
   box-sizing: border-box;
 }
 
+button {
+  outline: none;
+  border: none;
+}
+
+i {
+  opacity: 0.8;
+  color: gray;
+}
+
 .main-section {
   background-color: #fff;
   border-radius: 5px;
@@ -30,17 +40,24 @@
 .form-div {
   display: flex;
   justify-content: space-between;
-  padding: 3% 0;
+  padding: 2% 0;
+  min-height: 3%;
   border-bottom: 1px solid gray;
 }
 
 .form-input {
   display: flex;
   justify-content: space-between;
+  margin-right: 3%;
 }
 
 .form-input input {
   border: none;
+  height: 2.5rem;
+}
+
+#edit-todo-item {
+  display: none;
 }
 
 .todo-item {
@@ -75,4 +92,6 @@
 
 i:hover {
   cursor: pointer;
+  color: #000;
+  opacity: 1;
 }
