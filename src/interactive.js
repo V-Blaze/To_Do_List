@@ -2,7 +2,12 @@ import Methods from './utils.js'
 
 export default class Interactive {
 
-
+static toggleCompleted = (id, curStatus) => {
+    let todoList = Methods.getLocalStorageData()
+    todoList[id].completed = curStatus
+    Methods.setLocalStorageData(todoList)
+    Methods.showTodoItems()
+}
 
 static addCheckEvent = () => {
     document.querySelectorAll('.checkbox').forEach((box) => box.addEventListener('click', () => {
@@ -29,7 +34,7 @@ static addCheckEvent = () => {
 };
 
 static deleteAllCompleted = () => {
-
+    
     todoList = todoList.filter((item) => item !== itemToDelete);
 }
 
