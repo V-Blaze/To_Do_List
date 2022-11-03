@@ -77,6 +77,11 @@ i {
   padding-left: 1rem;
 }
 
+.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
 .clear {
   display: flex;
   justify-content: center;
