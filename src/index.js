@@ -23,4 +23,10 @@ edittodoForm.addEventListener('submit', (e) => {
 });
 
 document.querySelector('.clear-all').addEventListener('click', Interactive.deleteAllCompleted);
-Methods.showTodoItems();
+
+window.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('listUpdated', () => {
+    Interactive.addCheckEvent();
+  }, false);
+  Methods.showTodoItems();
+});

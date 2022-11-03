@@ -1,5 +1,4 @@
 import Todo from './todo.js';
-import Interactive from './interactive.js';
 
 export default class Methods {
 static setLocalStorageData = (todo) => {
@@ -85,23 +84,20 @@ static addBtnEditEvent = () => {
       id = 0;
     }
 
-    this.setUpEdit(id)
-
+    this.setUpEdit(id);
   }));
 };
 
 static addDoubleClickEditEvent = () => {
   document.querySelectorAll('.item').forEach((item) => item.addEventListener('dblclick', (event) => {
     event.preventDefault();
-    console.log(item.id, event.target)
     let id;
     if (item.id > 0) {
       id = item.id - 1;
     } else {
       id = 0;
     }
-    this.setUpEdit(id)
-
+    this.setUpEdit(id);
   }));
 };
 
@@ -127,20 +123,21 @@ static showTodoItems = () => {
   todoList.forEach((item) => {
     let curstatus;
     let iscompleted;
-    if(item.completed === true) {
-      curstatus = "checked"
-      iscompleted = "completed"
+    if (item.completed === true) {
+      curstatus = 'checked';
+      iscompleted = 'completed';
     } else {
-      curstatus = ''
-      iscompleted = ""
+      curstatus = '';
+      iscompleted = '';
     }
     document.querySelector('.todo_lists').append(this.creatTodoItemsHtml(item, curstatus, iscompleted));
   });
   this.addBtnRemoveEvent();
   this.addBtnEditEvent();
   this.addDoubleClickEditEvent();
-  Interactive.addCheckEvent();
-  
+
+  const event = new Event('listUpdated');
+  document.dispatchEvent(event);
 }
 
 static addTodoTask = (description) => {
