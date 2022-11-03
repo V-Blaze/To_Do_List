@@ -33,9 +33,14 @@ static addCheckEvent = () => {
     }));
 };
 
+
 static deleteAllCompleted = () => {
+    let todoList = Methods.getLocalStorageData()
     
-    todoList = todoList.filter((item) => item !== itemToDelete);
+    todoList = todoList.filter((item) => item.completed !== true);
+    Methods.reassignIndex(todoList);
+    Methods.setLocalStorageData(todoList);
+    Methods.showTodoItems()
 }
 
 }
