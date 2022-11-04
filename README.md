@@ -2,6 +2,10 @@
 
 - This is a basic website that allows users to add/remove todo's from a list.
 
+## LIVE DEMO
+
+- Click [HERE](https://v-blaze.github.io/To_Do_List/dist/) to see the live version
+
 ## Built With
 
 - HTML
