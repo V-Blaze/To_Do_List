@@ -147,6 +147,6 @@ static addTodoTask = (description) => {
 
   todoList.push(newTodoItem);
   this.setLocalStorageData(todoList);
-  this.showTodoItems();
+  // this.showTodoItems();
 };
 }

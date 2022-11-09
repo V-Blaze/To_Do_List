@@ -4,10 +4,14 @@
   "description": "",
   "private": "true",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest",
     "build": "webpack",
     "start": "webpack serve --open",
-    "watch": "jest --watch *.js"
+    "watch": "jest --watch"
+  },
+  "jest": {
+    "resetMocks": false,
+    "setupFiles": ["jest-localstorage-mock"]
   },
   "repository": {
     "type": "git",
@@ -37,5 +41,9 @@
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "jest-localstorage-mock": "^2.4.22",
+    "jsdom": "^20.0.2"
   }
 }
