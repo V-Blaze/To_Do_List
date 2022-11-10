@@ -10,7 +10,7 @@ describe('Toggle', () => {
     + '</div>';
     const obj = { description: 'Test task', completed: false, index: 1 };
     window.localStorage.setItem('todoList', JSON.stringify([obj]));
-  }); 
+  });
   test('Toggle function to change the completed status', () => {
     // Arrange and Act
     const id = 0;
@@ -68,25 +68,23 @@ describe('Clear all completed status', () => {
 
     // Assert
     expect(deleteCompletedTasksSpy).toHaveBeenCalledTimes(1);
-    const result = JSON.parse(window.localStorage.getItem('todoList'))
+    const result = JSON.parse(window.localStorage.getItem('todoList'));
     expect(result).toHaveLength(2);
   });
-  
+
   test('Edit description', () => {
     // Arrange and Act
     const deleteCompletedTasksSpy = jest.spyOn(Interactive, 'deleteAllCompleted');
     const todoList = JSON.parse(window.localStorage.getItem('todoList'));
     // Interactive.deleteAllCompleted();
-    
-    todoList.forEach((item) => item['completed'] = true)
-    window.localStorage.setItem('todoList', JSON.stringify(todoList))
-    Interactive.deleteAllCompleted();
 
+    todoList.forEach((item) => { item.completed = true; });
+    window.localStorage.setItem('todoList', JSON.stringify(todoList));
+    Interactive.deleteAllCompleted();
 
     // Assert
     expect(deleteCompletedTasksSpy).toHaveBeenCalledTimes(1);
-    const result = JSON.parse(window.localStorage.getItem('todoList'))
-    console.log(result)
+    const result = JSON.parse(window.localStorage.getItem('todoList'));
     expect(result).toHaveLength(0);
   });
 });
