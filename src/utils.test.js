@@ -71,3 +71,41 @@ describe('delete list item', () => {
     expect(localStorage.__STORE__.todoList).toBe(JSON.stringify([]));
   });
 });
+
+describe('Edit description', () => {
+  beforeEach(() => {
+    localStorage.clear();
+    jest.clearAllMocks();
+    localStorage.setItem.mockClear();
+    document.body.innerHTML = '<div class="todo_lists">'
+    + '<li></li>'
+    + '</div>';
+    const obj = { description: 'Test task', completed: false, index: 1 };
+    const obj2 = { description: 'Second task', completed: true, index: 2 };
+    window.localStorage.setItem('todoList', JSON.stringify([obj, obj2]));
+  });
+  test('Edit description', () => {
+    // Arrange and Act
+    const id = 0;
+    const updateTaskSpy = jest.spyOn(Utility, 'updateTaskInput');
+    Utility.updateTaskInput('This is a new task', id);
+
+    // Assert
+    expect(updateTaskSpy).toHaveBeenCalledTimes(1);
+    const result = JSON.parse(window.localStorage.getItem('todoList'))[id]
+      .description;
+    expect(result).toBe('This is a new task');
+  });
+  test('Edit description', () => {
+    // Arrange and Act
+    const id = 1;
+    const updateTaskSpy = jest.spyOn(Utility, 'updateTaskInput');
+    Utility.updateTaskInput('This is the second description', id);
+
+    // Assert
+    expect(updateTaskSpy).toHaveBeenCalledTimes(1);
+    const result = JSON.parse(window.localStorage.getItem('todoList'))[id];
+    expect(result.description).toBe('This is the second description');
+    expect(result.completed).toBeTruthy();
+  });
+});
