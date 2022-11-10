@@ -84,7 +84,7 @@ describe('Edit description', () => {
     const obj2 = { description: 'Second task', completed: true, index: 2 };
     window.localStorage.setItem('todoList', JSON.stringify([obj, obj2]));
   });
-  test('Edit description', () => {
+  test('Updating description to -This is a new task-', () => {
     // Arrange and Act
     const id = 0;
     const updateTaskSpy = jest.spyOn(Utility, 'updateTaskInput');
@@ -96,7 +96,7 @@ describe('Edit description', () => {
       .description;
     expect(result).toBe('This is a new task');
   });
-  test('Edit description', () => {
+  test('Updating the second objects description to -This is the second description-', () => {
     // Arrange and Act
     const id = 1;
     const updateTaskSpy = jest.spyOn(Utility, 'updateTaskInput');
